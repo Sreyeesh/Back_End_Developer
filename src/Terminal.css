@@ -1,0 +1,66 @@
+/* Terminal.css */
+.terminal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: limegreen;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Keeps input at the bottom */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .terminal-output {
+    overflow-y: auto;
+    padding-bottom: 20px;
+  }
+  
+  /* Custom scrollbar for terminal output */
+  .terminal-output::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .terminal-output::-webkit-scrollbar-thumb {
+    background: limegreen; 
+    border-radius: 5px;
+  }
+  
+  .terminal-input {
+    width: calc(100% - 20px);
+    background: none;
+    border: none;
+    color: limegreen;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px;
+    /* border-bottom: 2px solid limegreen; Remove or comment this line if you don't want any underline */
+    margin-bottom: 10px;
+  }
+  
+  
+  /* Blinking cursor effect */
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  
+  .terminal-input:focus {
+    animation: blink 1s step-end infinite;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .terminal {
+      font-size: 4vw; /* Larger font size for smaller devices */
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  
+    .terminal-input, .terminal-output {
+      font-size: 4vw; /* Adjust font size for readability */
+    }
+  }
+  

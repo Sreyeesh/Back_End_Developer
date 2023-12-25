@@ -1,42 +1,65 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Terminal.css */
+.terminal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: limegreen;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Keeps input at the bottom */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.terminal-output {
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Custom scrollbar for terminal output */
+.terminal-output::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: limegreen; 
+  border-radius: 5px;
+}
+
+.terminal-input {
+  width: calc(100% - 20px);
+  background: none;
+  border: none;
+  color: limegreen;
+  outline: none;
+  font-size: 1rem;
+  padding: 5px;
+  /* border-bottom: 2px solid limegreen; Remove or comment this line if you don't want any underline */
+  margin-bottom: 10px;
+}
+
+
+/* Blinking cursor effect */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.terminal-input:focus {
+  animation: blink 1s step-end infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .terminal {
+    font-size: 4vw; /* Larger font size for smaller devices */
+    padding: 10px; /* Reduce padding for smaller screens */
   }
-  to {
-    transform: rotate(360deg);
+
+  .terminal-input, .terminal-output {
+    font-size: 4vw; /* Adjust font size for readability */
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
